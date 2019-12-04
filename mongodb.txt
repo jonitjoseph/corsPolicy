@@ -1,0 +1,2119 @@
+Microsoft Windows [Version 10.0.18362.476]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\Administrator>mongo
+MongoDB shell version v4.0.2
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 4.0.2
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2019-11-19T09:26:12.027+0530 I CONTROL  [initandlisten]
+2019-11-19T09:26:12.027+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2019-11-19T09:26:12.027+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2019-11-19T09:26:12.027+0530 I CONTROL  [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> use sampledb
+switched to db sampledb
+> db
+sampledb
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db.createCollection("employee");
+{ "ok" : 1 }
+> db.employee.insert({id:"e001",name:"abraham",salary:40000,dept:"HR",location:"Kochi"})
+WriteResult({ "nInserted" : 1 })
+> db.employee.find()
+{ "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"), "id" : "e001", "name" : "abraham", "salary" : 40000, "dept" : "HR", "location" : "Kochi" }
+> db.employee.insert({pid:"p001",name:"printer",price:9000})
+WriteResult({ "nInserted" : 1 })
+> db.employee.find().pretty();
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+> db.employee.insertMany([{id:"e001",name:"abraham",salary:40000,dept:"HR",location:"Kochi"},{id:"e002",name:"benny",salary:42000,dept:"IT",location:"Calicut"},{id:"e003",name:"cherian",salary:44000,dept:"MECH",location:"Tvm"},{id:"e004",name:"dennis",salary:46000,dept:"IT",location:"Kochi"},{id:"e005",name:"ebin",salary:48000,dept:"HR",location:"Tsr"},{id:"e006",name:"febin",salary:38000,dept:"MECH",location:"Tvm"},{id:"e007",name:"george",salary:58000,dept:"IT",location:"Kochi"},{id:"e008",name:"helen",salary:55000,dept:"IT",location:"Tvm"},{id:"e009",name:"ilya",salary:50000,dept:"HR",location:"Tsr"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5ddb703eadba4d7590bf9e42"),
+                ObjectId("5ddb703eadba4d7590bf9e43"),
+                ObjectId("5ddb703eadba4d7590bf9e44"),
+                ObjectId("5ddb703eadba4d7590bf9e45"),
+                ObjectId("5ddb703eadba4d7590bf9e46"),
+                ObjectId("5ddb703eadba4d7590bf9e47"),
+                ObjectId("5ddb703eadba4d7590bf9e48"),
+                ObjectId("5ddb703eadba4d7590bf9e49"),
+                ObjectId("5ddb703eadba4d7590bf9e4a")
+        ]
+}
+> db.employee.find().pretty();
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.emp.insert({name:"hello"})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin     0.000GB
+config    0.000GB
+local     0.000GB
+sampledb  0.000GB
+> show collections()
+2019-11-25T11:45:45.381+0530 E QUERY    [js] Error: don't know how to show [collections()] :
+shellHelper.show@src/mongo/shell/utils.js:1055:11
+shellHelper@src/mongo/shell/utils.js:766:15
+@(shellhelp2):1:1
+> show collections
+emp
+employee
+> db.employee.find({name:"abraham"}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+> db.employee.find({dept:"HR"}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({DEPT:"HR"}).pretty()
+> db.employee.find({salary:"50000"}).pretty()
+> db.employee.find({salary:"55000"}).pretty()
+> db.employee.find({salary:55000}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+> db.employee.find({salary:50000}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({salary:$lt{50000}}).pretty()
+2019-11-25T12:06:36.710+0530 E QUERY    [js] SyntaxError: missing } after property list @(shell):1:28
+> db.employee.find({salary:{$lt:50000}}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+> db.employee.find({salary:{$gte:50000}}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({$or:[{location:"Kochi"},{location:"Tvm"}]}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+> db.employee.find({dept:})
+2019-11-25T12:20:53.777+0530 E QUERY    [js] SyntaxError: expected expression, got '}' @(shell):1:23
+> db.employee.find({dept:{$not:"HR"}}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "$not needs a regex or a document",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.employee.find({dept:{$nin:"HR"}}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "$nin needs an array",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.employee.find({dept:{$nin:["HR"]}}).pretty()
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+> db.employee.find({dept:{$in:["HR","IT"]}}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({$and:[{name:"abraham"},{dept:"HR"}]}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+> db.employee.find({$and:[{name:"helen"},{dept:"IT"}]}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+> db.employee.find({$in:[{dept:"HR"},{location:"Kochi"}]}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "unknown top level operator: $in",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.employee.find({dept:{$in:["HR"]},{location:{$in:["Kochi"]}}).pretty()
+... ^C
+
+> db.employee.find({$and:[{dept:"HR"},{location:"Kochi"}]}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+> show collections
+emp
+employee
+> db.employee.find().pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({$or:[{dept:"HR"},{location:"Kochi"}]}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({dept:"HR"},{location:"Kochi"}).pretty()
+{ "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"), "location" : "Kochi" }
+{ "_id" : ObjectId("5ddb703eadba4d7590bf9e42"), "location" : "Kochi" }
+{ "_id" : ObjectId("5ddb703eadba4d7590bf9e46"), "location" : "Tsr" }
+{ "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"), "location" : "Tsr" }
+> db.employee.find({dept:"HR",location:"Kochi"}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+> db.employee.find({dept:"HR",location:"Tsr"}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({dept:"HR"},{name:1,salary:1}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "name" : "abraham",
+        "salary" : 40000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "name" : "abraham",
+        "salary" : 40000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "name" : "ebin",
+        "salary" : 48000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "name" : "ilya",
+        "salary" : 50000
+}
+> db.employee.find({dept:"HR"},{name,salary}).pretty()
+2019-11-25T13:48:00.739+0530 E QUERY    [js] ReferenceError: name is not defined :
+@(shell):1:31
+> db.employee.find({dept:"HR"},{name:1,salary:1}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "name" : "abraham",
+        "salary" : 40000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "name" : "abraham",
+        "salary" : 40000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "name" : "ebin",
+        "salary" : 48000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "name" : "ilya",
+        "salary" : 50000
+}
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).pretty()
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "ebin", "salary" : 48000 }
+{ "name" : "ilya", "salary" : 50000 }
+> db.employee.find({dept:"HR"},{_id:null,name:1,salary:1}).pretty()
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "ebin", "salary" : 48000 }
+{ "name" : "ilya", "salary" : 50000 }
+> db.employee.find({$or:[{dept:"HR"},{dept:"Mech"}]},{_id:0,name:1}).pretty()
+{ "name" : "abraham" }
+{ "name" : "abraham" }
+{ "name" : "ebin" }
+{ "name" : "ilya" }
+> db.employee.find({$or:[{dept:"HR"},{dept:"MECH"}]},{_id:0,name:1}).pretty()
+{ "name" : "abraham" }
+{ "name" : "abraham" }
+{ "name" : "cherian" }
+{ "name" : "ebin" }
+{ "name" : "febin" }
+{ "name" : "ilya" }
+> db.employee.find({dept:{$in;["HR","MECH"]}},{_id:0,name:1}).pretty()
+2019-11-25T14:08:13.544+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:27
+> db.employee.find({dept:{$in:["HR","MECH"]}},{_id:0,name:1}).pretty()
+{ "name" : "abraham" }
+{ "name" : "abraham" }
+{ "name" : "cherian" }
+{ "name" : "ebin" }
+{ "name" : "febin" }
+{ "name" : "ilya" }
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).pretty()
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "ebin", "salary" : 48000 }
+{ "name" : "ilya", "salary" : 50000 }
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).sort({salary:-1}).pretty()
+{ "name" : "ilya", "salary" : 50000 }
+{ "name" : "ebin", "salary" : 48000 }
+{ "name" : "abraham", "salary" : 40000 }
+{ "name" : "abraham", "salary" : 40000 }
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).max(salary).pretty()
+2019-11-25T14:25:23.289+0530 E QUERY    [js] ReferenceError: salary is not defined :
+@(shell):1:1
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).max(salary:1).pretty()
+2019-11-25T14:25:38.032+0530 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:64
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).max({salary:1}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "error processing query: ns=sampledb.employeeTree: dept $eq \"HR\"\nSort: {}\nProj: { _id: 0.0, name: 1.0, salary: 1.0 }\n planner returned error: unable to find relevant index for max/min query",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).max(salary:1).pretty()
+2019-11-25T14:29:53.953+0530 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:64
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).limit(salary:1).pretty()
+2019-11-25T14:32:04.103+0530 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:66
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).limit(1).pretty()
+{ "name" : "abraham", "salary" : 40000 }
+> db.employee.find({},{}).limit(1).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+> db.employee.find({},{}).limit(2).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+> db.employee.find({},{}).max(2).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Failed to parse: max: 2.0. 'max' field must be of BSON type object.",
+        "code" : 9,
+        "codeName" : "FailedToParse"
+}
+> db.employee.find({},{}).skip(1).pretty()
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).sort(salary:-1).limit(1).pretty()
+2019-11-25T14:37:48.699+0530 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:65
+> db.employee.find({dept:"HR"},{_id:0,name:1,salary:1}).sort({salary:-1}).limit(1).pretty()
+{ "name" : "ilya", "salary" : 50000 }
+> db.employee.update({name:"abraham"},{$set:{salary:8000}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 8000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.update({name:"abraham"},{salary:8000})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employee.find({},{}).pretty()
+{ "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"), "salary" : 8000 }
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.find({},{}).pretty()
+{ "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"), "salary" : 8000 }
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.update({name:"john"},{$set:{project:p1})
+... ^C
+
+> db.employee.update({},{$set:{project:p1}},{multi:true})
+2019-11-25T15:05:34.356+0530 E QUERY    [js] ReferenceError: p1 is not defined :
+@(shell):1:30
+> db.employee.update({salary:8000},{$set:{project:p1}})
+2019-11-25T15:07:07.522+0530 E QUERY    [js] ReferenceError: p1 is not defined :
+@(shell):1:41
+> db.employee.update({salary:8000},{$set:{project:"p1"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr"
+}
+> db.employee.update({},{$set:{project:"p1"}},{multi:true})
+WriteResult({ "nMatched" : 11, "nUpserted" : 0, "nModified" : 10 })
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+> db.employee.update({dept:"HR"},{$set:{dept:"p1"}},{multi:true})
+WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "p1",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "p1",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "p1",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+> db.employee.update({dept:"p1"},{$set:{dept:"HR"}},{multi:true})
+WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+> db.employee.update({name:"sam"},{$set:{dept:"COMPUTE"}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.employee.update({name:"sam"},{$set:{dept:"COMPUTE"}},{upsert:true})
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : ObjectId("5ddba3b0e19327699680cf5a")
+})
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb6f1dadba4d7590bf9e41"),
+        "pid" : "p001",
+        "name" : "printer",
+        "price" : 9000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddba3b0e19327699680cf5a"),
+        "name" : "sam",
+        "dept" : "COMPUTE"
+}
+> db.employee.deleteOne({pid:"p001"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb6c4dadba4d7590bf9e40"),
+        "salary" : 8000,
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddba3b0e19327699680cf5a"),
+        "name" : "sam",
+        "dept" : "COMPUTE"
+}
+> db.employee.deleteMany({name:"sam"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.employee.deleteMany({name:"sam"})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.employee.deleteMany({name:"sam",salary:8000})
+{ "acknowledged" : true, "deletedCount" : 0 }
+> db.employee.deleteMany({project:"p1",salary:8000})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.employee.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e42"),
+        "id" : "e001",
+        "name" : "abraham",
+        "salary" : 40000,
+        "dept" : "HR",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e43"),
+        "id" : "e002",
+        "name" : "benny",
+        "salary" : 42000,
+        "dept" : "IT",
+        "location" : "Calicut",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e44"),
+        "id" : "e003",
+        "name" : "cherian",
+        "salary" : 44000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e45"),
+        "id" : "e004",
+        "name" : "dennis",
+        "salary" : 46000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e46"),
+        "id" : "e005",
+        "name" : "ebin",
+        "salary" : 48000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e47"),
+        "id" : "e006",
+        "name" : "febin",
+        "salary" : 38000,
+        "dept" : "MECH",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e48"),
+        "id" : "e007",
+        "name" : "george",
+        "salary" : 58000,
+        "dept" : "IT",
+        "location" : "Kochi",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e49"),
+        "id" : "e008",
+        "name" : "helen",
+        "salary" : 55000,
+        "dept" : "IT",
+        "location" : "Tvm",
+        "project" : "p1"
+}
+{
+        "_id" : ObjectId("5ddb703eadba4d7590bf9e4a"),
+        "id" : "e009",
+        "name" : "ilya",
+        "salary" : 50000,
+        "dept" : "HR",
+        "location" : "Tsr",
+        "project" : "p1"
+}
+> db.createCollection("emp")
+{
+        "ok" : 0,
+        "errmsg" : "a collection 'sampledb.emp' already exists",
+        "code" : 48,
+        "codeName" : "NamespaceExists"
+}
+> db.emp.insertMany([{name:{fname:"Ram",lname:"Das"},salary:8600,dept:"hr"},{name:{fname:"Ram",lname:"Das"},salary:8600,dept:"hr"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5ddbac1aadba4d7590bf9e4c"),
+                ObjectId("5ddbac1aadba4d7590bf9e4d")
+        ]
+}
+> db.emp.find({},{}).pretty()
+{ "_id" : ObjectId("5ddb7107adba4d7590bf9e4b"), "name" : "hello" }
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4c"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4d"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+> db.emp.find({fname.name="Ram"},{}).pretty()
+2019-11-25T15:56:58.344+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:18
+> db.emp.find({fname.name:"Ram"},{}).pretty()
+2019-11-25T15:57:15.677+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:18
+> db.emp.find({name.fname:"Ram"},{}).pretty()
+2019-11-25T15:58:01.875+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:17
+> db.emp.deleteOne({name:"hello"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.emp.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4c"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4d"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+> db.emp.find({name:{fname:"Ram"}},{}).pretty()
+> db.emp.find({"name.fname":"Ram"},{}).pretty()
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4c"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4d"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+> db.emp.find({name:{fname:"Ram"}},{}).pretty()
+> db.emp.find({name:{fname:"Ram"}}).pretty()
+> db.emp.find({name:{fname:"Ram",lname:"Das"}}).pretty()
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4c"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4d"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+> db.emp.updateOne({name.lname:"Das"},{$set{name.lname="Kumar"}})
+2019-11-25T16:09:34.674+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:22
+> db.emp.updateOne({name.lname:"Das"},{$set{name.lname:"Kumar"}})
+2019-11-25T16:09:44.202+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:22
+> db.emp.updateOne({"name.lname":"Das"},{$set{"name.lname":"Kumar"}})
+2019-11-25T16:10:04.577+0530 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:43
+> db.emp.updateOne({"name.lname":"Das"},{$set:{"name.lname":"Kumar"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.emp.find({},{}).pretty()
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4c"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Kumar"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+{
+        "_id" : ObjectId("5ddbac1aadba4d7590bf9e4d"),
+        "name" : {
+                "fname" : "Ram",
+                "lname" : "Das"
+        },
+        "salary" : 8600,
+        "dept" : "hr"
+}
+>
