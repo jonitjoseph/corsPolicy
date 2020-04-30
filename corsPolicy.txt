@@ -6,3 +6,5 @@ router.get('/', function(req, res) {
 
     // res.send('cors problem fixed:)');
 });
+
+//can be used to resolve cors issue.
