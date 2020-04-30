@@ -8,3 +8,5 @@ router.get('/', function(req, res) {
 });
 
 //can be used to resolve cors issue.
+
+//or use can use cors as an additional package via npm.
